@@ -1,31 +1,7 @@
 import {faker} from '@faker-js/faker';
 import {PluginDefinition} from '@yaakapp/api';
 
-const modules = [
-  "airline",
-  "animal",
-  "color",
-  "commerce",
-  "company",
-  "database",
-  "date",
-  "finance",
-  "git",
-  "hacker",
-  "image",
-  "internet",
-  "location",
-  "lorem",
-  "person",
-  "music",
-  "number",
-  "phone",
-  "science",
-  "string",
-  "system",
-  "vehicle",
-  "word",
-];
+const modules = Object.keys(faker).filter(key => !key.startsWith('_') && !['definitions', 'rawDefinitions'].includes(key));
 
 export const plugin: PluginDefinition = {
   templateFunctions: modules.flatMap(name => {
